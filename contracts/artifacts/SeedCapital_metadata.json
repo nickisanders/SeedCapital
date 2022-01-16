@@ -41,6 +41,63 @@
 					{
 						"indexed": true,
 						"internalType": "address",
+						"name": "addr",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "value",
+						"type": "uint256"
+					}
+				],
+				"name": "Locked",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "previousOwner",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "OwnershipPulled",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "previousOwner",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "OwnershipPushed",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
 						"name": "from",
 						"type": "address"
 					},
@@ -165,32 +222,6 @@
 				"type": "function"
 			},
 			{
-				"inputs": [],
-				"name": "devFund",
-				"outputs": [
-					{
-						"internalType": "address",
-						"name": "",
-						"type": "address"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "foundersFund",
-				"outputs": [
-					{
-						"internalType": "address",
-						"name": "",
-						"type": "address"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
 				"inputs": [
 					{
 						"internalType": "address",
@@ -204,6 +235,25 @@
 					}
 				],
 				"name": "increaseAllowance",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "addr",
+						"type": "address"
+					}
+				],
+				"name": "isLocked",
 				"outputs": [
 					{
 						"internalType": "bool",
@@ -229,12 +279,12 @@
 			},
 			{
 				"inputs": [],
-				"name": "symbol",
+				"name": "policy",
 				"outputs": [
 					{
-						"internalType": "string",
+						"internalType": "address",
 						"name": "",
-						"type": "string"
+						"type": "address"
 					}
 				],
 				"stateMutability": "view",
@@ -242,12 +292,57 @@
 			},
 			{
 				"inputs": [],
-				"name": "timelock",
-				"outputs": [
+				"name": "pullManagement",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "newOwner_",
+						"type": "address"
+					}
+				],
+				"name": "pushManagement",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "renounceManagement",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
 					{
 						"internalType": "uint256",
-						"name": "",
+						"name": "_weeks",
 						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "addr",
+						"type": "address"
+					}
+				],
+				"name": "setLockup",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "symbol",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
 					}
 				],
 				"stateMutability": "view",
@@ -382,19 +477,19 @@
 	},
 	"sources": {
 		"contracts/SeedCapital.sol": {
-			"keccak256": "0x0361905c451196aec78077bb829f42ce34c3d8e66f351372369ea07a2c58f446",
+			"keccak256": "0x58f7a56f867792a9350e6410f2ceb19d1c57f6aa611474c6f1827fe7f77dedfa",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://8ac19336c60ad89aa41437825307a6389f8b5233af1ae110d3aac20e443fc2b8",
-				"dweb:/ipfs/QmXGQNSniaXtKdxzhcSp9nxqFahJGNfnKi7JfHNFucTktS"
+				"bzz-raw://2ac8fde523e5d58046f7697afe260e900aabe0871c6abc41cb53521f93e21b7f",
+				"dweb:/ipfs/QmP9ozDFwUYNbgUR6Mtii9LFDgHZXbfmp5Hds7obArp29E"
 			]
 		},
 		"contracts/lib.sol": {
-			"keccak256": "0x11d8e78550c7c13a9b0b6a55b58b0c76c08dc5655d87aad9370e9142ee284b0d",
+			"keccak256": "0xf9be54dcd864135c9b13505681c7ea514b5c679b1b90d4269d7edab222b4f72f",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://0d6ed38d1a60fc4bf3d8254a98049eed8c9b4d2b2bb4a4ffc1117ac29a92c04b",
-				"dweb:/ipfs/QmSjd1N4i86JgWTMA746VoaYRnRrfEcRinfftbwszwJ4Ao"
+				"bzz-raw://175f1a51dd26ac57e8ffa52d92c426389f95c74829ad64a02ccd072297dad89d",
+				"dweb:/ipfs/Qma7kX8Kn2Bb6Q2gjCN5QFy9DCbf7Pg8xN79itCbjk6U7C"
 			]
 		}
 	},
